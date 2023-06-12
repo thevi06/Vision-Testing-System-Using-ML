@@ -24,3 +24,27 @@ class MainWindow(QMainWindow):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_position)
         self.timer.start(50)  # Update every 50 milliseconds
+
+        def update_position(self):
+            # Move the object in a square shape
+            if self.x < 1600 and self.y == 0:
+                self.x += 5
+            elif self.x == 1600 and self.y < 700:
+                self.y += 5
+            elif self.x > 0 and self.y == 700:
+                self.x -= 5
+            elif self.x == 0 and self.y > 0:
+                self.y -= 5
+
+            # Set the position of the object
+            self.image_label.move(self.x, self.y)
+
+            # Print the real-time coordinates to the console
+            print("X: {}, Y: {}".format(self.x, self.y))
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec_())
