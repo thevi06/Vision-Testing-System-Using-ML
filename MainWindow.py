@@ -228,3 +228,29 @@ class result(QThread):
         self.left_lower = np.zeros((1, 9))
         self.right_upper = np.zeros((1, 9))
         self.right_lower = np.zeros((1, 9))
+
+    def start_get_result(self):
+        self.start()
+
+    def stop_get_result(self):
+        self.wait()
+
+    def process(self, vector, ref_vector):
+        if ref_vector[0] == 1 and np.array_equiv(vector, ref_vector):
+            self.center = np.append(self.center, [vector], axis=0)
+        elif ref_vector[1] == 1 and np.array_equiv(vector, ref_vector):
+            self.left = np.append(self.left, [vector], axis=0)
+        elif ref_vector[2] == 1 and np.array_equiv(vector, ref_vector):
+            self.right = np.append(self.right, [vector], axis=0)
+        elif ref_vector[3] == 1 and np.array_equiv(vector, ref_vector):
+            self.up = np.append(self.up, [vector], axis=0)
+        elif ref_vector[4] == 1 and np.array_equiv(vector, ref_vector):
+            self.down = np.append(self.down, [vector], axis=0)
+        elif ref_vector[5] == 1 and np.array_equiv(vector, ref_vector):
+            self.right_upper = np.append(self.right_upper, [vector], axis=0)
+        elif ref_vector[6] == 1 and np.array_equiv(vector, ref_vector):
+            self.left_upper = np.append(self.left_upper, [vector], axis=0)
+        elif ref_vector[7] == 1 and np.array_equiv(vector, ref_vector):
+            self.left_lower = np.append(self.left_lower, [vector], axis=0)
+        elif ref_vector[8] == 1 and np.array_equiv(vector, ref_vector):
+            self.left_lower = np.append(self.right_lower, [vector], axis=0)
