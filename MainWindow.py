@@ -212,3 +212,19 @@ class MainWindow(QMainWindow):
     def get_information(self, left_vector, right_vector):
         self.result_left.process(left_vector, self.vector)
         self.result_right.process(right_vector, self.vector)
+
+class result(QThread):
+
+    def __init__(self, side, file_path):
+        super(result, self).__init__()
+        self.side = side
+        self.file_path = file_path
+        self.center = np.zeros((1, 9))
+        self.left = np.zeros((1, 9))
+        self.right = np.zeros((1, 9))
+        self.up = np.zeros((1, 9))
+        self.down = np.zeros((1, 9))
+        self.left_upper = np.zeros((1, 9))
+        self.left_lower = np.zeros((1, 9))
+        self.right_upper = np.zeros((1, 9))
+        self.right_lower = np.zeros((1, 9))
