@@ -157,3 +157,47 @@ class MainWindow(QMainWindow):
 
         self.result_left = result("left", self.file_path)
         self.result_right = result("right", self.file_path)
+
+        def access(self):
+            self.show()
+
+        def start(self):
+            self.thread_process.start_process()
+            self.result_left.start_get_result()
+            self.result_right.start_get_result()
+            s_time = time()
+            while time() - s_time < 8:
+                continue
+            self.x = 0
+            self.y = 0
+            self.timer.start(100)
+
+        def stop(self):
+            self.timer.stop()
+            self.x = 550
+            self.y = 275
+            self.Image_label.move(self.x, self.y)
+            self.thread_process.stop_process()
+            self.result_left.cal_result()
+            self.result_right.cal_result()
+            # self.result_left.stop_get_result()
+            # self.result_right.stop_get_result()
+            print("stop")
+
+        def pause(self):
+            # Pause the timer
+            if self.timer.isActive():
+                self.timer.stop()
+            else:
+                self.timer.start(10)
+
+        def update_position(self):
+            # Move the object in a square shape
+            if self.x < 1480 and self.y == 0:
+                self.x += 5
+            elif self.x == 1480 and self.y < 570:
+                self.y += 5
+            elif self.x > 0 and self.y == 570:
+                self.x -= 5
+            elif self.x == 0 and self.y > 0:
+                self.y -= 5
