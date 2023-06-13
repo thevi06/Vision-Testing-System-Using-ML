@@ -254,3 +254,27 @@ class result(QThread):
             self.left_lower = np.append(self.left_lower, [vector], axis=0)
         elif ref_vector[8] == 1 and np.array_equiv(vector, ref_vector):
             self.left_lower = np.append(self.right_lower, [vector], axis=0)
+
+    def cal_result(self):
+        center_result = np.mean(self.center, axis=0)
+        left_result = np.mean(self.left, axis=0)
+        right_result = np.mean(self.right, axis=0)
+        up_result = np.mean(self.up, axis=0)
+        down_result = np.mean(self.down, axis=0)
+        right_upper_result = np.mean(self.right_upper, axis=0)
+        left_upper_result = np.mean(self.left_upper, axis=0)
+        left_lower_result = np.mean(self.left_lower, axis=0)
+        right_lower_result = np.mean(self.right_lower, axis=0)
+
+        with open(os.path.join(self.file_path, "init.txt"), "a") as file:
+            file.write(f'\n\n'
+                       f'{self.side} eye tracking details\n'
+                       f'center details      : average tracking {str(center_result[0])} \n'
+                       f'left details        : average tracking {str(left_result[1])} \n'
+                       f'right details       : average tracking {str(right_result[2])} \n'
+                       f'up details          : average tracking {str(up_result[3])} \n'
+                       f'down details        : average tracking {str(down_result[4])} \n'
+                       f'right upper details : average tracking {str(right_upper_result[5])} \n'
+                       f'left upper details  : average tracking {str(left_upper_result[6])} \n'
+                       f'left lower details  : average tracking {str(left_lower_result[7])} \n'
+                       f'right lower details : average tracking {str(right_lower_result[8])} \n\n')
