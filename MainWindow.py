@@ -366,3 +366,9 @@ class process_thread(QThread):
                     self.position_vector_signal.emit(position_vector_left, position_vector_right)
                 vid.release()
                 cv.destroyAllWindows()
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    #window.show()
+    sys.exit(app.exec_())
