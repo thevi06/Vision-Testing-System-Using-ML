@@ -123,3 +123,37 @@ def filter_current_position(current_point, reference_point):
         position_vector[8] = 1
         # print("right lower")
     return position_vector
+
+class MainWindow(QMainWindow):
+    def __init__(self, *args, **kwargs):
+        super(MainWindow, self).__init__(*args, **kwargs)
+
+        uic.loadUi('main.ui', self)
+
+        self.login = Login()
+        self.login.show()
+        self.hide()
+
+        self.file_path = "C:\\Users\\senar\\OneDrive\\Desktop\\Report"
+
+        self.vector = np.zeros(9)
+        self.x = 550
+        self.y = 275
+
+        self.login.login_signal.connect(self.access)
+        self.pushButtonStart.clicked.connect(self.start)
+        self.pushButtonStop.clicked.connect(self.stop)
+        self.pushButtonPause.clicked.connect(self.pause)
+
+        self.Image_label = QLabel(self)
+        self.Image_label.setGeometry(self.x, self.y, 100, 100)
+        self.Image_label.setPixmap(QPixmap("butterfly.png").scaled(100, 100))
+
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_position)
+
+        self.thread_process = process_thread(self.file_path)
+        self.thread_process.position_vector_signal.connect(self.get_information)
+
+        self.result_left = result("left", self.file_path)
+        self.result_right = result("right", self.file_path)
