@@ -27,3 +27,18 @@ def file_path_create():
     else:
         print("Folder already exists.")
     return folder_path
+
+# give euclidean distance of two points
+def euclidean_distance(point1, point2):
+    return math.dist(point1, point2)
+
+
+# get center and the radius of iris
+def iris_details(points):
+    (r_x, r_y), r_radius = cv.minEnclosingCircle(points)
+    return (r_x, r_y), r_radius
+
+
+# normalize distance of points
+def normalized_distance(distance, total_distance):
+    return round((distance / total_distance), 2)
