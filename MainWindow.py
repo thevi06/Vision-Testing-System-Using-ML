@@ -201,3 +201,14 @@ class MainWindow(QMainWindow):
                 self.x -= 5
             elif self.x == 0 and self.y > 0:
                 self.y -= 5
+
+            # Set the position of the object
+            self.Image_label.move(self.x, self.y)
+
+            # x value of center,  center y  value, center y value
+            center = (550, 275, 275)
+            self.vector = filter_current_position((self.x, self.y, 275), center)
+
+    def get_information(self, left_vector, right_vector):
+        self.result_left.process(left_vector, self.vector)
+        self.result_right.process(right_vector, self.vector)
