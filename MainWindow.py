@@ -278,3 +278,26 @@ class result(QThread):
                        f'left upper details  : average tracking {str(left_upper_result[6])} \n'
                        f'left lower details  : average tracking {str(left_lower_result[7])} \n'
                        f'right lower details : average tracking {str(right_lower_result[8])} \n\n')
+
+face_mesh_points = mp.solutions.face_mesh
+
+
+class process_thread(QThread):
+    # values inside the parameters can be taken out
+    position_vector_signal = pyqtSignal(np.ndarray, np.ndarray)
+
+    def __init__(self, file_path):
+        super(process_thread, self).__init__()
+
+        self.position_vector = np.zeros((1, 9))
+        self.process_status = True
+        self.time_delay = 1
+        self.file_path = file_path
+
+    def start_process(self):
+        self.process_status = True
+        self.start()
+
+    def stop_process(self):
+        self.process_status = False
+        self.wait()
