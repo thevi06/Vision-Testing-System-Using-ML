@@ -301,3 +301,45 @@ class process_thread(QThread):
     def stop_process(self):
         self.process_status = False
         self.wait()
+
+    def run(self):
+        desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
+        vid = cv.VideoCapture(0)
+        with face_mesh_points.FaceMesh(max_num_faces=1, refine_landmarks=True, min_detection_confidence=0.5,
+                                       min_tracking_confidence=0.5) as face:
+            get_ref = False
+            while self.process_status:
+                ret, frame = vid.read()
+                if not ret:
+                    break
+                image = cv.flip(frame.copy(), 1)
+                image_rgb = cv.cvtColor(image.copy(), cv.COLOR_BGR2RGB)
+                result_image = face.process(image_rgb)
+                img_h, img_w = frame.shape[:2]
+                if result_image.multi_face_landmarks:
+                    face_points = np.array([np.multiply([p.x, p.y], [img_w, img_h]).astype(int)
+                                            for p in result_image.multi_face_landmarks[0].landmark])
+                    if not get_ref:
+                        center_left = get_initial_details_of_center_of_the_eye(face_points,
+                                                                               param["eye"]["left_iris"],
+                                                                               param["eye"]["left_eye"],
+                                                                               1)
+                        with open(os.path.join(self.file_path, "init.txt"),"w") as f:
+                            f.write(f"left eye initial details\n"
+                                    f"center                                    :{center_left[0][:2]} \n"
+                                    f"radius                                    :{center_left[0][2]} \n"
+                                    f"horizontal width from eye conner to center:{center_left[1]}\n"
+                                    f"vertical height from up to center         :{center_left[2]}\n\n")
+
+                        center_right = get_initial_details_of_center_of_the_eye(face_points,
+                                                                                param["eye"]["right_iris"],
+                                                                                param["eye"]["right_eye"],
+                                                                                1)
+                        with open(os.path.join(self.file_path, "init.txt"),"a") as f:
+                            f.write(f"right eye initial details\n"
+                                    f"center                                    :{center_right[0][:2]} \n"
+                                    f"radius                                    :{center_right[0][2]} \n"
+                                    f"horizontal width from eye conner to center:{center_right[1]}\n"
+                                    f"vertical height from up to center         :{center_right[2]}\n")
+
+                        get_ref = True
