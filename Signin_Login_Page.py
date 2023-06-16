@@ -154,3 +154,39 @@ class Login(QWidget):  # Login Page
                     print("Created table")
                 except mysql.connector.Error as err:
                     print(f"Failed creating table: {err}")
+
+    def checkcredential(self):
+        if self.connect_to_db_done is True:
+            username = self.lineEdits['Username'].text()
+            password = self.lineEdits['Password'].text()
+
+            query = "SELECT * FROM `usertable`WHERE username= %s and user_password= %s "  #####select username and password form database######
+            value = (username, password)
+            self.cursor.execute(query, value)
+            results = self.cursor.fetchone()  ######assign password and username to a variable#######
+            self.lineEdits['Username'].setText("")
+            self.lineEdits['Password'].setText("")
+
+            if len(username):
+                if len(password):
+                    if results:
+                        self.status.setText(
+                            'all ok')
+                        self.my_page.show()
+                        self.my_page.start_signal.connect(self.send_signal)
+                        self.hide()
+                        self.my_page.close_signal.connect(self.show)
+
+                        ###########check if password and username exist in the database############
+                        # self.lineEdits['Username'].setText("")
+                        # self.lineEdits['Password'].setText("")
+                    else:
+                        self.status.setText('User or Password is wrong')
+                        # self.lineEdits['Username'].setText("")
+                        # self.lineEdits['Password'].setText("")
+                else:
+                    self.status.setText('enter password')
+            else:
+                self.status.setText('enter username')
+        else:
+            QMessageBox.critical(self, "Error", "No Data Base. Contact the IT team")
