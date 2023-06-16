@@ -59,3 +59,29 @@ class Login(QWidget):  # Login Page
         labels['Login'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         labels['Username'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         labels['Password'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+
+        self.lineEdits['Username'] = QLineEdit()
+        self.lineEdits['Username'].setPlaceholderText("Username")
+        self.lineEdits['Password'] = QLineEdit()
+        self.lineEdits['Password'].setPlaceholderText("Password")
+        self.lineEdits['Password'].setEchoMode(QLineEdit.EchoMode.Password)
+
+        layout.addWidget(labels['Login'], 0, 0, 1, 1)
+
+        layout.addWidget(labels['Username'], 2, 0, 1, 1)
+        layout.addWidget(self.lineEdits['Username'], 2, 1, 1, 2)
+
+        layout.addWidget(labels['Password'], 3, 0, 1, 1)
+        layout.addWidget(self.lineEdits['Password'], 3, 1, 1, 2)
+
+        layout.addWidget(labels['register'], 6, 0, 1, 2)
+
+        button_login = QPushButton('&Log In', clicked=self.checkcredential)  ####Login Button Click ######
+        layout.addWidget(button_login, 4, 2, 1, 1)
+        button_register = QPushButton('&Signup', clicked=self.open_second_gui)  ####Signup page button#####
+        layout.addWidget(button_register, 6, 2, 1, 1)
+
+        self.status = QLabel('')  #########Validate Error Message##########
+        self.status.setStyleSheet('font-size: 13px; color: red;')
+        layout.addWidget(self.status, 4, 0, 1, 1)
+        # self.my_page.close_signal(self.getWindow)
