@@ -34,3 +34,28 @@ class Login(QWidget):  # Login Page
         layout = QGridLayout()  # Layout
         fulllayout = QHBoxLayout()
         self.setLayout(fulllayout)
+
+        imglabel = QLabel(self)  # image
+        pixmap = QPixmap('baby.jpg')
+        imglabel.setPixmap(pixmap)
+        fulllayout.addWidget(imglabel)
+        fulllayout.addLayout(layout)
+
+        imglabel1 = QLabel(self)  # Logo
+        pixmap = QPixmap('logoMINI.JPG')
+        imglabel1.setPixmap(pixmap)
+        imglabel1.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        layout.addWidget(imglabel1, 0, 2)
+
+        labels = {}  # Labels and Input fields
+        self.lineEdits = {}
+
+        labels['Login'] = QLabel('Login')
+        labels['Login'].setStyleSheet('font-size: 25px; color: blue;')
+        labels['Username'] = QLabel('Username')
+        labels['Password'] = QLabel('Password')
+        labels['register'] = QLabel("Don't have an account? Signup")
+        labels['register'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['Login'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['Username'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['Password'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
