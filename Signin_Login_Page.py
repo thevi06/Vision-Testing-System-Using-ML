@@ -85,3 +85,35 @@ class Login(QWidget):  # Login Page
         self.status.setStyleSheet('font-size: 13px; color: red;')
         layout.addWidget(self.status, 4, 0, 1, 1)
         # self.my_page.close_signal(self.getWindow)
+
+    def getWindow(self,status):
+        #self.show()
+
+        print(status)
+
+
+    def getData(self,myList):
+        print(myList)
+
+
+        query1 = "SELECT nic FROM `usertable` WHERE username= %s or nic= %s "  #######select from database#######
+        value1 = (myList[2], myList[5])
+        self.cursor.execute(query1, value1)
+        results = self.cursor.fetchone()
+
+        if not results:
+            print("all ok")
+        else:
+            print("already exists")
+
+        query = "INSERT INTO usertable VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        values = (
+            myList[0], myList[1],myList[2],myList[3],myList[4],
+            myList[5],myList[6],myList[7])
+
+        # Execute the query
+        self.cursor.execute(query, values)
+
+        # Commit the changes to the database
+        self.cnx.commit()
+        self.show()
