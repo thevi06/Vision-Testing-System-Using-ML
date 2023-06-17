@@ -201,3 +201,62 @@ class Login(QWidget):  # Login Page
             self.signUp.signal.connect(self.show)
         else:
             QMessageBox.critical(self, "Error", "No Data Base, Contact the IT team")
+
+class Signup(QWidget):  ########Signup Page#########
+    signal = pyqtSignal()
+    sendSignal = pyqtSignal(list)
+
+    def __init__(self):
+        #self.cursor = cursor
+        super().__init__()
+        self.setWindowTitle('Signup')
+        self.setWindowIcon(QIcon(''))
+        self.window_width, self.window_height = 600, 400
+        self.setFixedSize(self.window_width, self.window_height)
+
+        layout = QGridLayout()  #####Layout#####
+        self.setLayout(layout)
+
+        labels = {}  ##########Labels and Input fields############
+        self.lineEdits = {}
+
+        labels['details'] = QLabel('Enter your signup details here')
+        labels['details'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+
+        labels['space'] = QLabel('')
+        labels['space'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+
+        labels['Signup'] = QLabel('Signup')
+        labels['Signup'].setStyleSheet('font-size: 25px; color: blue;')
+        labels['Signup'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+
+        labels['name'] = QLabel('Full name')
+        labels['name'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['username'] = QLabel('Username')
+        labels['username'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['gender'] = QLabel('Gender')
+        labels['dateofbirth'] = QLabel('Date of birth')
+        labels['gender'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['dateofbirth'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['nic'] = QLabel('Nic')
+        labels['mobile'] = QLabel('Mobile number')
+        labels['nic'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['mobile'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['npassword'] = QLabel('New password')
+        labels['cpassword'] = QLabel('Confirm password')
+        labels['npassword'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['cpassword'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+
+        # self.lineEdits['details'] = QLineEdit()
+        # self.lineEdits['details'].setPlaceholderText("Your details")
+        self.lineEdits['firstname'] = QLineEdit()
+        self.lineEdits['firstname'].setPlaceholderText("First name")
+        self.lineEdits['lastname'] = QLineEdit()
+        self.lineEdits['lastname'].setPlaceholderText("Last name")
+        self.lineEdits['username'] = QLineEdit()
+        self.lineEdits['username'].setPlaceholderText("Username")
+
+        self.lineEdits['gender'] = QLineEdit()
+        self.lineEdits['gender'].setPlaceholderText("Male/Female/Prefer not to say")
+        self.lineEdits['dateofbirth'] = QLineEdit()
+        self.lineEdits['dateofbirth'].setPlaceholderText("YYYY-MM-DD")
