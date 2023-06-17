@@ -260,3 +260,17 @@ class Signup(QWidget):  ########Signup Page#########
         self.lineEdits['gender'].setPlaceholderText("Male/Female/Prefer not to say")
         self.lineEdits['dateofbirth'] = QLineEdit()
         self.lineEdits['dateofbirth'].setPlaceholderText("YYYY-MM-DD")
+
+        validator = QIntValidator()  ########Integer Validator########
+
+        self.lineEdits['nic'] = QLineEdit()
+        self.lineEdits['nic'].setPlaceholderText("Nic number")
+        self.lineEdits['mobile'] = QLineEdit()
+        self.lineEdits['mobile'].setValidator(validator)
+        self.lineEdits['mobile'].setPlaceholderText("Mobile number")
+        self.lineEdits['npassword'] = QLineEdit()
+        self.lineEdits['npassword'].setEchoMode(QLineEdit.EchoMode.Password)
+        self.lineEdits['npassword'].setPlaceholderText("New password")
+        self.lineEdits['cpassword'] = QLineEdit()
+        self.lineEdits['cpassword'].setEchoMode(QLineEdit.EchoMode.Password)
+        self.lineEdits['cpassword'].setPlaceholderText("Confirm Password")
