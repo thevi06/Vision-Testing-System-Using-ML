@@ -190,3 +190,14 @@ class Login(QWidget):  # Login Page
                 self.status.setText('enter username')
         else:
             QMessageBox.critical(self, "Error", "No Data Base. Contact the IT team")
+
+    def send_signal(self):
+        self.login_signal.emit()
+
+    def open_second_gui(self):
+        if self.connect_to_db_done:#######Signup page open function#######
+            self.signUp.show()
+            self.hide()
+            self.signUp.signal.connect(self.show)
+        else:
+            QMessageBox.critical(self, "Error", "No Data Base, Contact the IT team")
