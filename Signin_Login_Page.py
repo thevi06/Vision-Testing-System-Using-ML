@@ -419,3 +419,7 @@ class Signup(QWidget):  ########Signup Page#########
         # else:
         #     self.status.setText('enter details')
         #     self.lineEdits['details'].setText("")
+
+    def go_back(self):
+        self.signal.emit()
+        self.close()
