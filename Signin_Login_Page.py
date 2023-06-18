@@ -327,3 +327,95 @@ class Signup(QWidget):  ########Signup Page#########
         mobile = self.lineEdits['mobile'].text()
         npassword = self.lineEdits['npassword'].text()
         cpassword = self.lineEdits['cpassword'].text()
+
+        # query1 = "SELECT nic FROM `usertable` WHERE username= %s or nic= %s "  #######select from database#######
+        # value1 = (username, nic)
+        # self.cursor.execute(query1, value1)
+        # results = self.cursor.fetchone()
+
+        # if len(details) > 0:
+        if len(firstname) > 0:
+            if len(lastname) > 0:
+                if len(username) > 0:
+                    if len(gender) > 0:
+                        if gender.lower() == 'male' or gender.lower() == 'female' or gender.lower() == 'prefer not to say':
+                            if len(dateofbirth) > 0:
+                                if date.isValid():
+                                    if len(nic) > 0:
+                                        if len(mobile) > 0:
+                                            if len(npassword) > 0:
+                                                if len(npassword) >= 4:
+                                                    if len(cpassword) > 0:
+                                                        if npassword == cpassword:
+                                                            # if not results:
+                                                            self.status.setText('all ok')
+                                                            self.sendSignal.emit(
+                                                                [firstname, lastname, username, npassword, mobile, nic,
+                                                                 dateofbirth, gender])
+                                                            self.close()
+                                                            # query = "INSERT INTO usertable VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+                                                            # values = (
+                                                            #     firstname, lastname, username, npassword, mobile,
+                                                            #     nic, dateofbirth, gender)
+                                                            #
+                                                            # # Execute the query
+                                                            # self.cursor.execute(query, values)
+                                                            #
+                                                            # # Commit the changes to the database
+                                                            # cnx.commit()
+                                                            # self.lineEdits['details'].setText("")
+                                                            self.lineEdits['firstname'].setText("")
+                                                            self.lineEdits['lastname'].setText("")
+                                                            self.lineEdits['username'].setText("")
+                                                            self.lineEdits['gender'].setText("")
+                                                            self.lineEdits['dateofbirth'].setText("")
+                                                            self.lineEdits['nic'].setText("")
+                                                            self.lineEdits['mobile'].setText("")
+                                                            self.lineEdits['npassword'].setText("")
+                                                            self.lineEdits['cpassword'].setText("")
+                                                        # else:
+                                                        #     self.status.setText('User name or NIC already exist')
+                                                        #     self.lineEdits['username'].setText("")
+                                                        #     self.lineEdits['nic'].setText("")
+                                                        else:
+                                                            self.status.setText("confirm password dosn't match")
+                                                            self.lineEdits['cpassword'].setText("")
+                                                    else:
+                                                        self.status.setText('confirm password')
+                                                        self.lineEdits['cpassword'].setText("")
+                                                else:
+                                                    self.status.setText('password must be more than 4 digits')
+                                                    self.lineEdits['npassword'].setText("")
+                                            else:
+                                                self.status.setText('enter new password')
+                                                self.lineEdits['npassword'].setText("")
+                                        else:
+                                            self.status.setText('enter mobile number')
+                                            self.lineEdits['mobile'].setText("")
+                                    else:
+                                        self.status.setText('enter nic')
+                                        self.lineEdits['nic'].setText("")
+                                else:
+                                    self.status.setText('invalid date')
+                                    self.lineEdits['dateofbirth'].setText("")
+                            else:
+                                self.status.setText('enter date')
+                                self.lineEdits['dateofbirth'].setText("")
+                        else:
+                            self.status.setText('not valid')
+                            self.lineEdits['gender'].setText("")
+                    else:
+                        self.status.setText('enter gender')
+                        self.lineEdits['gender'].setText("")
+                else:
+                    self.status.setText('enter username')
+                    self.lineEdits['username'].setText("")
+            else:
+                self.status.setText('enter lastname')
+                self.lineEdits['lastname'].setText("")
+        else:
+            self.status.setText('enter firstname')
+            self.lineEdits['firstname'].setText("")
+        # else:
+        #     self.status.setText('enter details')
+        #     self.lineEdits['details'].setText("")
