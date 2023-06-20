@@ -77,3 +77,38 @@ class Login(QWidget):  # Login Page
         self.status = QLabel('')  #########Validate Error Message##########
         self.status.setStyleSheet('font-size: 13px; color: red;')
         layout.addWidget(self.status, 4, 0, 1, 1)
+
+    def connect_to_db(self):
+        try:
+            cnx = mysql.connector.connect(host="localhost",
+                                          user="root",
+                                          password="",
+                                          database="users",
+                                          autocommit=True)
+            self.cursor = cnx.cursor()
+            print("Connected to database")
+            self.connect_to_db_done = True
+        except mysql.connector.Error as err:
+            if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+                print("Something is wrong with your user name or password")
+            elif err.errno == errorcode.ER_BAD_DB_ERROR:
+                # Create the database and table if they don't exist
+                cnx = mysql.connector.connect(host="localhost",
+                                              user="root",
+                                              password="",
+                                              autocommit=True)
+                self.cursor = cnx.cursor()
+                try:
+                    self.cursor.execute("CREATE DATABASE users")
+                    print("Created database")
+                except mysql.connector.Error as err:
+                    print(f"Failed creating database: {err}")
+                try:
+                    self.cursor.execute("USE users")
+                    self.cursor.execute(
+                        "CREATE TABLE usertable (first_name VARCHAR(255),last_name VARCHAR(255),username VARCHAR(255),"
+                        "user_password VARCHAR(255),mobile_number INT,nic VARCHAR(255) PRIMARY KEY,date_of_birth DATE,"
+                        "gender VARCHAR(255));")
+                    print("Created table")
+                except mysql.connector.Error as err:
+                    print(f"Failed creating table: {err}")
