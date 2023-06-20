@@ -137,3 +137,13 @@ class Login(QWidget):  # Login Page
                         ###########check if password and username exist in the database############
                         # self.lineEdits['Username'].setText("")
                         # self.lineEdits['Password'].setText("")
+                        else:
+                        self.status.setText('User or Password is wrong')
+                        # self.lineEdits['Username'].setText("")
+                        # self.lineEdits['Password'].setText("")
+                else:
+                    self.status.setText('enter password')
+                else:
+                self.status.setText('enter username')
+        else:
+            QMessageBox.critical(self, "Error", "No Data Base. Contact the IT team")
