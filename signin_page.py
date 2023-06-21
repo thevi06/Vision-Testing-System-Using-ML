@@ -291,3 +291,17 @@ class Signup(QWidget):  ########Signup Page#########
         labels['cpassword'] = QLabel('Confirm password')
         labels['npassword'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         labels['cpassword'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+
+        # self.lineEdits['details'] = QLineEdit()
+        # self.lineEdits['details'].setPlaceholderText("Your details")
+        self.lineEdits['firstname'] = QLineEdit()
+        self.lineEdits['firstname'].setPlaceholderText("First name")
+        self.lineEdits['lastname'] = QLineEdit()
+        self.lineEdits['lastname'].setPlaceholderText("Last name")
+        self.lineEdits['username'] = QLineEdit()
+        self.lineEdits['username'].setPlaceholderText("Username")
+
+        self.lineEdits['gender'] = QLineEdit()
+        self.lineEdits['gender'].setPlaceholderText("Male/Female/Prefer not to say")
+        self.lineEdits['dateofbirth'] = QLineEdit()
+        self.lineEdits['dateofbirth'].setPlaceholderText("YYYY-MM-DD")
