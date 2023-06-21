@@ -137,13 +137,13 @@ class Login(QWidget):  # Login Page
                         ###########check if password and username exist in the database############
                         # self.lineEdits['Username'].setText("")
                         # self.lineEdits['Password'].setText("")
-                        else:
+                    else:
                         self.status.setText('User or Password is wrong')
                         # self.lineEdits['Username'].setText("")
                         # self.lineEdits['Password'].setText("")
                 else:
                     self.status.setText('enter password')
-                else:
+            else:
                 self.status.setText('enter username')
         else:
             QMessageBox.critical(self, "Error", "No Data Base. Contact the IT team")
@@ -248,3 +248,19 @@ class Login(QWidget):  # Login Page
             self.signUp.signal.connect(self.show)
         else:
             QMessageBox.critical(self, "Error", "No Data Base, Contact the IT team")
+
+class Signup(QWidget):  ########Signup Page#########
+    signal = pyqtSignal()
+    send_data = pyqtSignal(str, str, str, str,str,str,str,str,str,str)
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle('Signup')
+        self.setWindowIcon(QIcon(''))
+        self.window_width, self.window_height = 600, 400
+        self.setFixedSize(self.window_width, self.window_height)
+
+        layout = QGridLayout()  #####Layout#####
+        self.setLayout(layout)
+
+        labels = {}  ##########Labels and Input fields############
+        self.lineEdits = {}
