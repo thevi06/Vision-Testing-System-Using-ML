@@ -191,3 +191,49 @@ class Login(QWidget):  # Login Page
                                                                 self.lineEdits['mobile'].setText("")
                                                                 self.lineEdits['npassword'].setText("")
                                                                 self.lineEdits['cpassword'].setText("")
+                                                            else:
+                                                                self.status.setText('User name or NIC already exist')
+                                                                self.lineEdits['username'].setText("")
+                                                                self.lineEdits['nic'].setText("")
+                                                        else:
+                                                            self.status.setText("confirm password dosn't match")
+                                                            self.lineEdits['cpassword'].setText("")
+                                                    else:
+                                                        self.status.setText('confirm password')
+                                                        self.lineEdits['cpassword'].setText("")
+                                                else:
+                                                    self.status.setText('password must be more than 4 digits')
+                                                    self.lineEdits['npassword'].setText("")
+                                            else:
+                                                self.status.setText('enter new password')
+                                                self.lineEdits['npassword'].setText("")
+                                        else:
+                                            self.status.setText('enter mobile number')
+                                            self.lineEdits['mobile'].setText("")
+                                    else:
+                                        self.status.setText('enter nic')
+                                        self.lineEdits['nic'].setText("")
+                                else:
+                                    self.status.setText('invalid date')
+                                    self.lineEdits['dateofbirth'].setText("")
+                            else:
+                                self.status.setText('enter date')
+                                self.lineEdits['dateofbirth'].setText("")
+                        else:
+                            self.status.setText('not valid')
+                            self.lineEdits['gender'].setText("")
+                    else:
+                        self.status.setText('enter gender')
+                        self.lineEdits['gender'].setText("")
+                else:
+                    self.status.setText('enter username')
+                    self.lineEdits['username'].setText("")
+            else:
+                self.status.setText('enter lastname')
+                self.lineEdits['lastname'].setText("")
+        else:
+            self.status.setText('enter firstname')
+            self.lineEdits['firstname'].setText("")
+        # else:
+        #     self.status.setText('enter details')
+         #     self.lineEdits['details'].setText("")
