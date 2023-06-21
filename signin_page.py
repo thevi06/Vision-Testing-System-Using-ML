@@ -349,3 +349,13 @@ class Signup(QWidget):  ########Signup Page#########
         layout.addWidget(self.lineEdits['npassword'], 10, 1, 1, 2)
         layout.addWidget(labels['cpassword'], 11, 0, 1, 1)
         layout.addWidget(self.lineEdits['cpassword'], 11, 1, 1, 2)
+
+        button_Signup = QPushButton('&Signup', clicked=self.checkcredential)  ########Button to Signup######
+        layout.addWidget(button_Signup, 12, 4, 1, 1)
+
+        button_Register = QPushButton('&Return login', clicked=self.go_back)  #######Button to first page########
+        layout.addWidget(button_Register, 12, 3, 1, 1)
+
+        self.status = QLabel('')  ########Validate Error Message#######
+        self.status.setStyleSheet('font-size: 13px; color: red;')
+        layout.addWidget(self.status, 13, 0, 1, 2)
