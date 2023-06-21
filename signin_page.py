@@ -147,3 +147,47 @@ class Login(QWidget):  # Login Page
                 self.status.setText('enter username')
         else:
             QMessageBox.critical(self, "Error", "No Data Base. Contact the IT team")
+
+    def send_data(self, firstname, lastname, username,gender, dateofbirth,date,nic,mobile,npassword,cpassword):
+
+        query1 = "SELECT nic FROM `usertable` WHERE username= %s or nic= %s "  #######select from database#######
+        value1 = (username, nic)
+        self.cursor.execute(query1, value1)
+        results = self.cursor.fetchone()
+
+        # if len(details) > 0:
+        if len(firstname) > 0:
+            if len(lastname) > 0:
+                if len(username) > 0:
+                    if len(gender) > 0:
+                        if gender.lower() == 'male' or gender.lower() == 'female' or gender.lower() == 'prefer not to say':
+                            if len(dateofbirth) > 0:
+                                if date.isValid():
+                                    if len(nic) > 0:
+                                        if len(mobile) > 0:
+                                            if len(npassword) > 0:
+                                                if len(npassword) >= 4:
+                                                    if len(cpassword) > 0:
+                                                        if npassword == cpassword:
+                                                            if not results:
+                                                                self.status.setText('all ok')
+                                                                query = "INSERT INTO usertable VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+                                                                values = (
+                                                                    firstname, lastname, username, npassword, mobile,
+                                                                    nic, dateofbirth, gender)
+
+                                                                # Execute the query
+                                                                self.cursor.execute(query, values)
+
+                                                                # Commit the changes to the database
+                                                                self.cnx.commit()
+                                                                # self.lineEdits['details'].setText("")
+                                                                self.lineEdits['firstname'].setText("")
+                                                                self.lineEdits['lastname'].setText("")
+                                                                self.lineEdits['username'].setText("")
+                                                                self.lineEdits['gender'].setText("")
+                                                                self.lineEdits['dateofbirth'].setText("")
+                                                                self.lineEdits['nic'].setText("")
+                                                                self.lineEdits['mobile'].setText("")
+                                                                self.lineEdits['npassword'].setText("")
+                                                                self.lineEdits['cpassword'].setText("")
