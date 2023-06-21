@@ -374,3 +374,7 @@ class Signup(QWidget):  ########Signup Page#########
         npassword = self.lineEdits['npassword'].text()
         cpassword = self.lineEdits['cpassword'].text()
         self.send_data.emit(firstname,lastname,username,gender, dateofbirth,date,nic,mobile,npassword,cpassword)
+
+    def go_back(self):
+        self.signal.emit()
+        self.close()
