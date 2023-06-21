@@ -264,3 +264,30 @@ class Signup(QWidget):  ########Signup Page#########
 
         labels = {}  ##########Labels and Input fields############
         self.lineEdits = {}
+
+        labels['details'] = QLabel('Enter your signup details here')
+        labels['details'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+
+        labels['space'] = QLabel('')
+        labels['space'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+
+        labels['Signup'] = QLabel('Signup')
+        labels['Signup'].setStyleSheet('font-size: 25px; color: blue;')
+        labels['Signup'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+
+        labels['name'] = QLabel('Full name')
+        labels['name'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['username'] = QLabel('Username')
+        labels['username'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['gender'] = QLabel('Gender')
+        labels['dateofbirth'] = QLabel('Date of birth')
+        labels['gender'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['dateofbirth'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['nic'] = QLabel('Nic')
+        labels['mobile'] = QLabel('Mobile number')
+        labels['nic'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['mobile'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['npassword'] = QLabel('New password')
+        labels['cpassword'] = QLabel('Confirm password')
+        labels['npassword'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        labels['cpassword'].setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
