@@ -319,3 +319,33 @@ class Signup(QWidget):  ########Signup Page#########
         self.lineEdits['cpassword'] = QLineEdit()
         self.lineEdits['cpassword'].setEchoMode(QLineEdit.EchoMode.Password)
         self.lineEdits['cpassword'].setPlaceholderText("Confirm Password")
+
+        imglabel1 = QLabel(self)  #######Logo#######
+        pixmap = QPixmap('logoMINI.JPG')
+        imglabel1.setPixmap(pixmap)
+        imglabel1.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        layout.addWidget(imglabel1, 0, 4, 2, 1)
+
+        layout.addWidget(labels['Signup'], 0, 0, 2, 1)
+        layout.addWidget(labels['details'], 2, 0, 1, 1)
+        # layout.addWidget(self.lineEdits['details'], 3, 0, 1, 5)
+        layout.addWidget(labels['space'], 3, 0, 1, 1)
+        layout.addWidget(labels['name'], 4, 0, 1, 1)
+        layout.addWidget(self.lineEdits['firstname'], 4, 1, 1, 2)
+        layout.addWidget(self.lineEdits['lastname'], 4, 3, 1, 2)
+        layout.addWidget(labels['username'], 5, 0, 1, 1)
+        layout.addWidget(self.lineEdits['username'], 5, 1, 1, 2)
+
+        layout.addWidget(labels['gender'], 6, 0, 1, 1)
+        layout.addWidget(self.lineEdits['gender'], 6, 1, 1, 2)
+        layout.addWidget(labels['dateofbirth'], 7, 0, 1, 1)
+        layout.addWidget(self.lineEdits['dateofbirth'], 7, 1, 1, 2)
+
+        layout.addWidget(labels['nic'], 8, 0, 1, 1)
+        layout.addWidget(self.lineEdits['nic'], 8, 1, 1, 2)
+        layout.addWidget(labels['mobile'], 9, 0, 1, 1)
+        layout.addWidget(self.lineEdits['mobile'], 9, 1, 1, 2)
+        layout.addWidget(labels['npassword'], 10, 0, 1, 1)
+        layout.addWidget(self.lineEdits['npassword'], 10, 1, 1, 2)
+        layout.addWidget(labels['cpassword'], 11, 0, 1, 1)
+        layout.addWidget(self.lineEdits['cpassword'], 11, 1, 1, 2)
