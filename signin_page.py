@@ -359,3 +359,18 @@ class Signup(QWidget):  ########Signup Page#########
         self.status = QLabel('')  ########Validate Error Message#######
         self.status.setStyleSheet('font-size: 13px; color: red;')
         layout.addWidget(self.status, 13, 0, 1, 2)
+
+    def checkcredential(self):
+        # details = self.lineEdits['details'].text()
+        firstname = self.lineEdits['firstname'].text()
+        lastname = self.lineEdits['lastname'].text()
+        username = self.lineEdits['username'].text()
+        gender = self.lineEdits['gender'].text()
+        dateofbirth = self.lineEdits['dateofbirth'].text().strip()
+        #date = QDate.fromString(dateofbirth, "yyyy-MM-dd")
+        date = "abc"
+        nic = self.lineEdits['nic'].text()
+        mobile = self.lineEdits['mobile'].text()
+        npassword = self.lineEdits['npassword'].text()
+        cpassword = self.lineEdits['cpassword'].text()
+        self.send_data.emit(firstname,lastname,username,gender, dateofbirth,date,nic,mobile,npassword,cpassword)
