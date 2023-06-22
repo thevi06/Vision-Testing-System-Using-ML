@@ -37,3 +37,6 @@ class TestEuclideanDistance(unittest.TestCase):
 
         # check if the actual output matches the expected output
         self.assertAlmostEqual(distance, expected_distance, places=2)
+
+if __name__ == '_main_':
+    unittest.main()
