@@ -1,0 +1,20 @@
+{
+  "eye": {
+    "left_eye": [362, 263, 386, 374],
+    "right_eye": [133, 33, 159,145],
+    "left_iris": [474, 475, 476, 477],
+    "right_iris": [469, 470, 471, 472]
+},
+  "threshold_rho": {
+    "left": 0.35,
+    "right": 0.65,
+    "center_left": 0.45,
+    "center_right": 0.55
+  },
+  "threshold_y":{
+    "up": 0.4,
+    "down": 0.57 ,
+    "center_up": 0.45,
+    "center_down": 0.55
+  }
+}
