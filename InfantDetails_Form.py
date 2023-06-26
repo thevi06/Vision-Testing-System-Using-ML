@@ -145,3 +145,23 @@ class MyPage(QWidget):
         self.email_input.setFixedSize(200, 30)
         self.email_input.setFont(QFont())
         self.email_input.setPlaceholderText("abcd@gmail.com")
+
+        # Create buttons
+        self.login_button = QPushButton("Return to LOGINPAGE")
+        self.submit_button = QPushButton("Submit & start Testing")
+        self.db_button = QPushButton("Select from existing database")
+
+        # Connect button to function
+        self.submit_button.clicked.connect(self.submit_data)
+        self.login_button.clicked.connect(self.return_to_login)
+
+        self.db_button.clicked.connect(self.getDetails)
+
+        # Change the color of the login button
+        self.login_button.setStyleSheet("background-color: #235FF9; color: white;")
+
+        # Change the color of the submit button
+        self.submit_button.setStyleSheet("background-color: #235FF9; color: white;")
+
+        # Change the color of the db button
+        self.db_button.setStyleSheet("background-color: #65C8FF; color: white;")
