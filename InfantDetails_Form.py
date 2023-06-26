@@ -30,3 +30,19 @@ class MyPage(QWidget):
             int(width_percent * screen_size.width()),
             int(height_percent * screen_size.height())
         )
+
+        # Set the background color to blue
+        self.setStyleSheet("background-color: #D0DAFF;")
+
+        self.setWindowTitle("ECTA")
+
+        # Create a white container in the middle of the page
+        container = QWidget(self)
+        container.setStyleSheet("background-color: white;")
+
+        container_layout = QVBoxLayout()
+
+        # Create the heading label and add it to the container layout
+        heading_label = QLabel("Infants Details Form", self)
+        heading_label.setFont(QFont("Inter", 15, QFont.Weight.Bold))
+        heading_label.setStyleSheet("color: #3136AF;")  # Set the text color to blue
