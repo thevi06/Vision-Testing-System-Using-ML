@@ -165,3 +165,25 @@ class MyPage(QWidget):
 
         # Change the color of the db button
         self.db_button.setStyleSheet("background-color: #65C8FF; color: white;")
+
+        # Add form elements and buttons to form container
+        form_layout = QGridLayout()
+        form_layout.addWidget(name_label, 0, 0)
+        form_layout.addWidget(self.first_name_input, 0, 1)
+        form_layout.addWidget(self.surname_input, 0, 2)
+        form_layout.addWidget(gender_label, 1, 0)
+        form_layout.addWidget(self.gender_input, 1, 1)
+        form_layout.addWidget(dob_label, 2, 0)
+        form_layout.addWidget(self.dob_input, 2, 1)
+        form_layout.addWidget(test_id_label, 3, 0)
+        form_layout.addWidget(self.test_id_input, 3, 1)
+        form_layout.addWidget(parent_type_label, 4, 0)
+        form_layout.addWidget(self.parent_type_input, 4, 1)
+        form_layout.addWidget(parent_name_label, 5, 0)
+        form_layout.addWidget(self.parent_name_input, 5, 1)
+        form_layout.addWidget(nic_number_label, 6, 0)
+        form_layout.addWidget(self.nic_number_input, 6, 1)
+        form_layout.addWidget(contact_number_label, 7, 0)
+        form_layout.addWidget(self.contact_number_input, 7, 1)
+        form_layout.addWidget(email_label, 8, 0)
+        form_layout.addWidget(self.email_input, 8, 1)
