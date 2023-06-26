@@ -46,3 +46,20 @@ class MyPage(QWidget):
         heading_label = QLabel("Infants Details Form", self)
         heading_label.setFont(QFont("Inter", 15, QFont.Weight.Bold))
         heading_label.setStyleSheet("color: #3136AF;")  # Set the text color to blue
+
+        # Set up the blue underline
+        underline = QLabel()
+        underline.setStyleSheet("background-color: #869EF4;")
+        underline.setFixedHeight(2)
+
+        # Get the width of the text and add padding of 20 pixels on each side
+        text_width = heading_label.fontMetrics().boundingRect(heading_label.text()).width() + 2
+        underline.setFixedWidth(text_width)
+
+        # Create a layout to hold the heading and underline
+        heading_layout = QVBoxLayout()
+        heading_layout.addWidget(heading_label)
+        heading_layout.addWidget(underline)
+
+        # Add the heading layout to the container layout
+        container_layout.addLayout(heading_layout)
