@@ -82,3 +82,15 @@ class MyPage(QWidget):
         hbox.addWidget(icon)
         hbox.setContentsMargins(0, 0, 0, 0)
         hbox.setSpacing(0)
+
+        # Add the horizontal layout to the container layout
+        container_layout.addLayout(hbox)
+
+        # Add a vertical spacer to push the form elements to the top of the container
+        container_layout.addStretch(1)
+
+        # Set the layout of the container
+        container.setLayout(container_layout)
+
+        # Create the form layout
+        form_layout = QFormLayout()
