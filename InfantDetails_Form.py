@@ -7,3 +7,8 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLa
     QPushButton, QDateEdit, QFormLayout, QSizePolicy, QMessageBox
 from PyQt5.QtGui import QFont, QPixmap
 from Infants_Database import MyWidget
+
+class MyPage(QWidget):
+
+    start_signal = pyqtSignal()
+    close_signal = pyqtSignal(bool)
