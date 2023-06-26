@@ -187,3 +187,10 @@ class MyPage(QWidget):
         form_layout.addWidget(self.contact_number_input, 7, 1)
         form_layout.addWidget(email_label, 8, 0)
         form_layout.addWidget(self.email_input, 8, 1)
+
+        # Add buttons to form container
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(self.login_button)
+        button_layout.addWidget(self.submit_button)
+        button_layout.addWidget(self.db_button)
+        form_layout.addLayout(button_layout, 9, 1, 1, 2)
