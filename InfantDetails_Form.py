@@ -194,3 +194,16 @@ class MyPage(QWidget):
         button_layout.addWidget(self.submit_button)
         button_layout.addWidget(self.db_button)
         form_layout.addLayout(button_layout, 9, 1, 1, 2)
+
+        # Add the form layout to the container layout
+        container_layout.addLayout(form_layout)
+
+        # Set the layout of the container
+        container.setLayout(container_layout)
+
+        # Add the container to the main layout
+        main_layout = QVBoxLayout()
+        main_layout.addWidget(container)
+
+        # Set the main layout of the page
+        self.setLayout(main_layout)
