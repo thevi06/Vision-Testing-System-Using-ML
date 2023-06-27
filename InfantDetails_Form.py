@@ -207,3 +207,10 @@ class MyPage(QWidget):
 
         # Set the main layout of the page
         self.setLayout(main_layout)
+
+    def getDetails(self):
+        self.database.show()
+
+    def return_to_login(self):
+        self.close_signal.emit(True)
+        self.close()
