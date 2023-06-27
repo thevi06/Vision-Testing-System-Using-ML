@@ -257,3 +257,9 @@ class MyPage(QWidget):
                                 )
                             """)
                     print("Table created")
+                    # Close the connection
+                    cursor.close()
+                    conn.close()
+
+        except Exception as E:
+            QMessageBox.critical(self, "Error", str(E))
