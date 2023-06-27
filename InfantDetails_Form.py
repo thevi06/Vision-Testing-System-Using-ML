@@ -214,3 +214,17 @@ class MyPage(QWidget):
     def return_to_login(self):
         self.close_signal.emit(True)
         self.close()
+
+    def create_database_and_table(self):
+        # Connect to MySQL
+        try:
+            conn = mysql.connector.connect(
+                host="localhost",
+                user="root",
+                password=""
+            )
+
+            # Check if the database exists
+            cursor = conn.cursor()
+            cursor.execute("SHOW DATABASES")
+            databases = [x[0] for x in cursor]
