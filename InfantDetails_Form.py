@@ -228,3 +228,11 @@ class MyPage(QWidget):
             cursor = conn.cursor()
             cursor.execute("SHOW DATABASES")
             databases = [x[0] for x in cursor]
+
+        if "infantsdatabase" not in databases:
+            # Create the database
+            cursor.execute("CREATE DATABASE InfantsDatabase")
+            print("Database created")
+
+            # Use the database
+            conn.database = "InfantsDatabase"
