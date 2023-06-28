@@ -274,3 +274,18 @@ class MyPage(QWidget):
         nic_number = self.nic_number_input.text()
         contact_number = self.contact_number_input.text()
         email = self.email_input.text()
+
+        # Check for empty fields
+        if not all([name, gender, dob, test_id, parent_type, parent_name, nic_number, contact_number, email]):
+            QMessageBox.critical(self, "Error", "Please fill all the fields!")
+            return
+
+        # Validate name
+        if not re.match(r"^[A-Za-z\s]+$", name):
+            QMessageBox.critical(self, "Error", "Name can only contain letters and spaces!")
+            return
+
+        # Validate gender
+        if gender.lower() not in ["male", "female", "other"]:
+            QMessageBox.critical(self, "Error", "Gender can only be Male, Female, or Other!")
+            return
