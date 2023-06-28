@@ -263,3 +263,14 @@ class MyPage(QWidget):
 
         except Exception as E:
             QMessageBox.critical(self, "Error", str(E))
+
+    def submit_data(self):
+        name = self.first_name_input.text() + " " + self.surname_input.text()
+        gender = self.gender_input.text()
+        dob = self.dob_input.text()
+        test_id = self.test_id_input.text()
+        parent_type = self.parent_type_input.text()
+        parent_name = self.parent_name_input.text()
+        nic_number = self.nic_number_input.text()
+        contact_number = self.contact_number_input.text()
+        email = self.email_input.text()
