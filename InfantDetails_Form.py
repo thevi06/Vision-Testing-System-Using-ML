@@ -289,3 +289,20 @@ class MyPage(QWidget):
         if gender.lower() not in ["male", "female", "other"]:
             QMessageBox.critical(self, "Error", "Gender can only be Male, Female, or Other!")
             return
+
+            # Validate dob
+            try:
+                datetime.datetime.strptime(dob, '%d/%m/%Y')
+            except ValueError:
+                QMessageBox.critical(self, "Error", "Invalid date format. Date should be in DD/MM/YYYY format!")
+                return
+
+            # Validate test_id
+            if not re.match(r"^[A-Za-z0-9]+$", test_id):
+                QMessageBox.critical(self, "Error", "Test ID can only contain letters and numbers!")
+                return
+
+            # Validate parent_type
+            if parent_type.lower() not in ["father", "mother", "guardian"]:
+                QMessageBox.critical(self, "Error", "Parent Type can only be Father, Mother, or Guardian!")
+                return
