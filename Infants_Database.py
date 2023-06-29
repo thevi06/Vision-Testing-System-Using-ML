@@ -16,3 +16,10 @@ class MyWidget(QWidget):
         self.container_widget.setStyleSheet("background-color: white;")
         self.table_widget = QTableWidget()
         self.table_widget.setStyleSheet("background-color: white;")
+
+        # Create heading label
+        self.heading_label = QLabel("Ecta Infant Database")
+        self.heading_label.setStyleSheet("font-size: 20px; font-weight: bold; margin-top: 10px; margin-bottom: 10px;")
+
+        # Create button layout
+        self.button_layout = QHBoxLayout()
