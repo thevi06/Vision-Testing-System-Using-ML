@@ -334,3 +334,16 @@ class MyPage(QWidget):
             password="",
             database="InfantsDatabase"
         )
+
+        # Insert the data into the table
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO InfantsTable (name,gender,dob,test_id,parent_type,parent_name,nic_number,contact_number,email) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+            (name, gender, dob, test_id, parent_type, parent_name, nic_number, contact_number, email,))
+        conn.commit()
+        self.start_signal.emit()
+        print("Data inserted")
+        # Close the connection
+        cursor.close()
+        conn.close()
+        self.close()
