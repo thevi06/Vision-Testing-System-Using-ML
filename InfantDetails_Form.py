@@ -297,32 +297,40 @@ class MyPage(QWidget):
                 QMessageBox.critical(self, "Error", "Invalid date format. Date should be in DD/MM/YYYY format!")
                 return
 
-            # Validate test_id
-            if not re.match(r"^[A-Za-z0-9]+$", test_id):
-                QMessageBox.critical(self, "Error", "Test ID can only contain letters and numbers!")
-                return
+        # Validate test_id
+        if not re.match(r"^[A-Za-z0-9]+$", test_id):
+            QMessageBox.critical(self, "Error", "Test ID can only contain letters and numbers!")
+            return
 
-            # Validate parent_type
-            if parent_type.lower() not in ["father", "mother", "guardian"]:
-                QMessageBox.critical(self, "Error", "Parent Type can only be Father, Mother, or Guardian!")
-                return
+        # Validate parent_type
+        if parent_type.lower() not in ["father", "mother", "guardian"]:
+            QMessageBox.critical(self, "Error", "Parent Type can only be Father, Mother, or Guardian!")
+            return
 
-                # Validate parent_name
-                if not re.match(r"^[A-Za-z\s]+$", parent_name):
-                    QMessageBox.critical(self, "Error", "Parent Name can only contain letters and spaces!")
-                    return
+        # Validate parent_name
+        if not re.match(r"^[A-Za-z\s]+$", parent_name):
+            QMessageBox.critical(self, "Error", "Parent Name can only contain letters and spaces!")
+            return
 
-                # Validate nic_number
-                if not re.match(r"^[0-9]{10}[vVxX]?$", nic_number):
-                    QMessageBox.critical(self, "Error", "Invalid NIC Number!")
-                    return
+        # Validate nic_number
+        if not re.match(r"^[0-9]{10}[vVxX]?$", nic_number):
+            QMessageBox.critical(self, "Error", "Invalid NIC Number!")
+            return
 
-                # Validate contact_number
-                if not re.match(r"^\+?\d{10,12}$", contact_number):
-                    QMessageBox.critical(self, "Error", "Invalid Contact Number!")
-                    return
+        # Validate contact_number
+        if not re.match(r"^\+?\d{10,12}$", contact_number):
+            QMessageBox.critical(self, "Error", "Invalid Contact Number!")
+            return
 
-                # Validate email
-                if not re.match(r"^[^@]+@[^@]+\.[^@]+$", email):
-                    QMessageBox.critical(self, "Error", "Invalid Email Address!")
-                    return
+        # Validate email
+        if not re.match(r"^[^@]+@[^@]+\.[^@]+$", email):
+            QMessageBox.critical(self, "Error", "Invalid Email Address!")
+            return
+
+        # Connect to MySQL
+        conn = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="InfantsDatabase"
+        )
