@@ -306,3 +306,23 @@ class MyPage(QWidget):
             if parent_type.lower() not in ["father", "mother", "guardian"]:
                 QMessageBox.critical(self, "Error", "Parent Type can only be Father, Mother, or Guardian!")
                 return
+
+                # Validate parent_name
+                if not re.match(r"^[A-Za-z\s]+$", parent_name):
+                    QMessageBox.critical(self, "Error", "Parent Name can only contain letters and spaces!")
+                    return
+
+                # Validate nic_number
+                if not re.match(r"^[0-9]{10}[vVxX]?$", nic_number):
+                    QMessageBox.critical(self, "Error", "Invalid NIC Number!")
+                    return
+
+                # Validate contact_number
+                if not re.match(r"^\+?\d{10,12}$", contact_number):
+                    QMessageBox.critical(self, "Error", "Invalid Contact Number!")
+                    return
+
+                # Validate email
+                if not re.match(r"^[^@]+@[^@]+\.[^@]+$", email):
+                    QMessageBox.critical(self, "Error", "Invalid Email Address!")
+                    return
