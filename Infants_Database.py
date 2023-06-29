@@ -45,3 +45,15 @@ class MyWidget(QWidget):
         self.container_layout.addWidget(self.table_widget)
         self.container_layout.addLayout(self.button_layout)
         self.container_widget.setLayout(self.container_layout)
+
+        # Add container widget to main layout
+        self.layout.addWidget(self.container_widget)
+
+        # Set main layout for widget
+        self.setLayout(self.layout)
+
+        # Set background color of main window to blue
+        self.setStyleSheet("background-color: #D0DAFF;")
+
+        # Initialize UI
+        self.initUI()
