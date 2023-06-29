@@ -33,3 +33,15 @@ class MyWidget(QWidget):
         self.login_button.setStyleSheet("background-color: #D9D9D9;")
         self.testing_button.setStyleSheet("background-color: #D9D9D9;")
         self.home_button.setStyleSheet("background-color: #D9D9D9;")
+
+        # Add buttons to button layout
+        self.button_layout.addWidget(self.login_button)
+        self.button_layout.addWidget(self.testing_button)
+        self.button_layout.addWidget(self.home_button)
+
+        # Add heading label, table widget, and button layout to container widget
+        self.container_layout = QVBoxLayout()
+        self.container_layout.addWidget(self.heading_label)
+        self.container_layout.addWidget(self.table_widget)
+        self.container_layout.addLayout(self.button_layout)
+        self.container_widget.setLayout(self.container_layout)
