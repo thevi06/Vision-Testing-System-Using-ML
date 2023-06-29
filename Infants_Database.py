@@ -8,3 +8,11 @@ class MyWidget(QWidget):
 
         # Create main layout
         self.layout = QVBoxLayout()
+
+        # Create container widget
+        self.container_widget = QWidget()
+
+        # Set background color of container widget and table widget to white
+        self.container_widget.setStyleSheet("background-color: white;")
+        self.table_widget = QTableWidget()
+        self.table_widget.setStyleSheet("background-color: white;")
