@@ -23,3 +23,13 @@ class MyWidget(QWidget):
 
         # Create button layout
         self.button_layout = QHBoxLayout()
+
+        # Create buttons
+        self.login_button = QPushButton("Return to LOGINPAGE")
+        self.testing_button = QPushButton("SELECT & START TESTING")
+        self.home_button = QPushButton("RETURN TO HOME PAGE")
+
+        # Set background color of buttons to gray
+        self.login_button.setStyleSheet("background-color: #D9D9D9;")
+        self.testing_button.setStyleSheet("background-color: #D9D9D9;")
+        self.home_button.setStyleSheet("background-color: #D9D9D9;")
