@@ -68,10 +68,21 @@ class MyWidget(QWidget):
                 password="",
                 database="InfantsDatabase"
             )
-        print("Database connection successful!")
-        cursor = connection.cursor()
-        cursor.execute("SELECT * FROM InfantsTable")
-        rows = cursor.fetchall()
-        num_rows = len(rows)
+            print("Database connection successful!")
+            cursor = connection.cursor()
+            cursor.execute("SELECT * FROM InfantsTable")
+            rows = cursor.fetchall()
+            num_rows = len(rows)
 
-        print("Number of rows returned:", num_rows)
+            print("Number of rows returned:", num_rows)
+
+            self.table_widget.setRowCount(num_rows)
+            self.table_widget.setColumnCount(10)
+            self.table_widget.setHorizontalHeaderLabels(
+                ["id", "name", "gender", "dob", "test_id", "parent_type", "parent_name", "nic_number", "contact_number",
+                "email"])
+
+            for i, row in enumerate(rows):
+                for j, value in enumerate(row):
+                    item = QTableWidgetItem(str(value))
+                    self.table_widget.setItem(i, j, item)
