@@ -57,3 +57,14 @@ class MyWidget(QWidget):
 
         # Initialize UI
         self.initUI()
+
+    def initUI(self):
+
+        # Connect to database and populate table
+        try:
+            connection = mysql.connector.connect(
+                host="localhost",
+                user="root",
+                password="",
+                database="InfantsDatabase"
+            )
