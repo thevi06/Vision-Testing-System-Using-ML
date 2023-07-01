@@ -86,3 +86,10 @@ class MyWidget(QWidget):
                 for j, value in enumerate(row):
                     item = QTableWidgetItem(str(value))
                     self.table_widget.setItem(i, j, item)
+
+        except Exception as e:
+            print("Database connection failed:", e)
+
+        finally:
+            if connection:
+                connection.close()
