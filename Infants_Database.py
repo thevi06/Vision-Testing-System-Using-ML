@@ -68,3 +68,10 @@ class MyWidget(QWidget):
                 password="",
                 database="InfantsDatabase"
             )
+        print("Database connection successful!")
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM InfantsTable")
+        rows = cursor.fetchall()
+        num_rows = len(rows)
+
+        print("Number of rows returned:", num_rows)
